@@ -1,0 +1,8 @@
+venv/
+static/
+media/
+__pycache__/
+node_modules/
+.DS_Store
+.dockerignore
+*.sqlite3

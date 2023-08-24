@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: /V3UN6NQBg7tLzWw93PFBTUXMnq45PvNQyE9q0dUO/
+
+# Sitemap files
+Sitemap: {{ wagtail_site.root_url }}/sitemap.xml

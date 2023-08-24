@@ -1,0 +1,114 @@
+{% load static wagtailcore_tags wagtailuserbar tailwind_tags i18n wagtailmetadata_tags %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+            {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+            {% wagtail_site as current_site %}
+            {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+            {% endblock %}
+        </title>
+        {% if request.path != '/search/' %}
+            {% meta_tags %}
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow">
+
+        {% if page.canonical_url %}
+            <link rel="canonical" href="{{ page.canonical_url }}"/>
+        {% endif %}
+
+        {% if page.get_author %}
+            <meta name="author" content="{{ page.get_author }}" />
+        {% endif %}
+
+        {# Force all links in the live preview panel to be opened in a new tab #}
+        {% if request.in_preview_panel %}
+        <base target="_blank">
+        {% endif %}
+
+        {# Global stylesheets #}
+        {% tailwind_css %}
+<!--        <link rel="stylesheet" type="text/css" href="{% static 'css/dist/styles.css' %}" />-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/aadhyatrinetra.css' %}"/>
+
+        {% block extra_css %}
+        {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+
+    <header class="bg-black text-white">
+        <nav class="flex items-center justify-center md:justify-between py-3 h-14 max-w-6xl mx-auto relative">
+
+            {% wagtail_site as current_site %}
+            <a href="/">{{ current_site.site_name }}</a>
+
+
+            <form role="search" method="get" action="/search/">
+                <label class="absolute md:relative block w-11/12 md:w-64 top-14 md:top-0">
+                    <span class="sr-only">Search</span>
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <input
+                        class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                        placeholder="Search..." type="text" name="q" title="Search for:" />
+                </label>
+            </form>
+        </nav>
+
+        <nav class="md:flex hidden justify-center items-center h-14">
+            <ul class="flex h-100">
+                <li class="mr-2">
+                    <a class="font-semibold" href="javascript:void(0);">Home</a>
+                </li>
+                <li class="mr-2">
+                    <a class="font-semibold" href="javascript:void(0);">Technology</a>
+                </li>
+                <li class="mr-2">
+                    <a class="font-semibold" href="javascript:void(0);">Travel</a>
+                </li>
+                <li class="mr-2">
+                    <a class="font-semibold" href="javascript:void(0);">Food</a>
+                </li>
+                <li class="mr-2">
+                    <a class="font-semibold" href="javascript:void(0);">Health</a>
+                </li>
+                <li class="mr-2">
+                    <a class="font-semibold" href="javascript:void(0);">Finance</a>
+                </li>
+                <li class="mr-2">
+                    <a class="font-semibold" href="javascript:void(0);">Fashion</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    {% block content %}{% endblock %}
+    </main>
+
+        <footer class="w-full text-center py-5 bg-black text-white">
+            © 2023 ImpelVerse. All rights reserved
+        </footer>
+
+        {# Global javascript #}
+<!--        <script type="text/javascript" src="{% static 'js/aadhyatrinetra.js' %}"></script>-->
+
+        {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>
