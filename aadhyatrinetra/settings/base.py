@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     "theme",
     "django_browser_reload",
 
-
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -100,10 +99,19 @@ WSGI_APPLICATION = "aadhyatrinetra.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#     }
+# }
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'krW6xsJUszLr9pFiJcUf',
+        "USER": 'linuxuser',
+        "PASSWORD": 'sRu7D98ihrsJuAplogDyqAM81M7lbtvEGJNvWfYn'
     }
 }
 
@@ -192,7 +200,7 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-WAGTAILADMIN_BASE_URL = "https://impelverse.com"
+WAGTAILADMIN_BASE_URL = "https://www.impelverse.com"
 
 WAGTAILIMAGES_IMAGE_MODEL = "blogs.CustomImage"
 

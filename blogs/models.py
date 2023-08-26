@@ -265,7 +265,7 @@ class BlogPost(MetadataPageMixin, Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
-        index.SearchField('body'),
+        index.SearchField('content'),
     ]
 
 

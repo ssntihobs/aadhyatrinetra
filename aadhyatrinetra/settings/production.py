@@ -1,10 +1,10 @@
 from .base import *
 
-DEBUG = False
-SECRET_KEY = "django-insecure-86f!dgt8^=8cj6ts+u!whmf85&ldb5=3%g80z2y(ls+2#*cfdx"
-ALLOWED_HOSTS = ["*"]
+SECRET_KEY = 'EU9Cpozke$dLCbk2$~byv@fa2amF9$p4~RckzSPi#HZTydQ$NQgZ$ECc29$kugJXD#59YPbmYsZrW59gW@`@k3vVKZVZrLZ43ctK'
+ALLOWED_HOSTS = ["http://www.impelverse.com"]
 
-try:
-    from .base import *
-except ImportError:
-    pass
+DEBUG = False
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
