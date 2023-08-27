@@ -182,14 +182,18 @@ class BlogPost(MetadataPageMixin, Page):
     )
     category = models.ForeignKey('categories.Category', on_delete=models.SET_NULL, null=True, blank=True,
                                  related_name='blogs')
+    keywords = models.CharField(max_length=128, null=True, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('thumbnail'),
         FieldPanel('category'),
-        # FieldPanel('description'),
         FieldPanel('publication_date'),
         FieldPanel('content'),
         FieldPanel('tags'),
+    ]
+
+    promote_panels = Page.promote_panels + [
+        FieldPanel('keywords'),
     ]
 
     @cached_property

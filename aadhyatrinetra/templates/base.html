@@ -17,6 +17,10 @@
         {% if request.path != '/search/' %}
             {% meta_tags %}
         {% endif %}
+
+        {% if page.keywords %}
+            <meta name="keywords" content="{{ page.keywords }}">
+        {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow">
 
