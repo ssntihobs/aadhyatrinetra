@@ -4,7 +4,7 @@ SECRET_KEY = 'EU9Cpozke$dLCbk2$~byv@fa2amF9$p4~RckzSPi#HZTydQ$NQgZ$ECc29$kugJXD#
 ALLOWED_HOSTS = ['https://impelverse.com', 'https://www.impelverse.com']
 CSRF_TRUSTED_ORIGINS = ['https://impelverse.com', 'https://www.impelverse.com']
 
-DEBUG = False
+DEBUG = True
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
