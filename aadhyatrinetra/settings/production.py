@@ -1,7 +1,7 @@
 from .base import *
 
 SECRET_KEY = 'EU9Cpozke$dLCbk2$~byv@fa2amF9$p4~RckzSPi#HZTydQ$NQgZ$ECc29$kugJXD#59YPbmYsZrW59gW@`@k3vVKZVZrLZ43ctK'
-ALLOWED_HOSTS = ["http://www.impelverse.com"]
+ALLOWED_HOSTS = ["https://impelverse.com"]
 
 DEBUG = False
 
