@@ -108,7 +108,7 @@ WSGI_APPLICATION = "aadhyatrinetra.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'krW6xsJUszLr9pFiJcUf',
+        "NAME": 'krw6xsjuszlr9pfijcuf',
         "USER": 'plutobitti',
         "PASSWORD": 'K2FP5eDNdw23HeRqgE97nxRvZkrib7htmpTSfdmF',
         'HOST': 'localhost',
