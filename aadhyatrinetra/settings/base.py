@@ -27,11 +27,11 @@ INSTALLED_APPS = [
     "categories",
     "blogs",
     "wagtailmarkdown",
-    "debug_toolbar",
+    # "debug_toolbar",
 
-    "tailwind",
-    "theme",
-    "django_browser_reload",
+    # "tailwind",
+    # "theme",
+    # "django_browser_reload",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -70,7 +70,6 @@ MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "aadhyatrinetra.urls"
@@ -99,23 +98,23 @@ WSGI_APPLICATION = "aadhyatrinetra.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
-
 # DATABASES = {
 #     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": 'krW6xsJUszLr9pFiJcUf',
-#         "USER": 'linuxuser',
-#         "PASSWORD": 'sRu7D98ihrsJuAplogDyqAM81M7lbtvEGJNvWfYn',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
 #     }
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'krW6xsJUszLr9pFiJcUf',
+        "USER": 'putto',
+        "PASSWORD": 'sRu7D98ihrsJuAplogDyqAM81M7lbtvEGJNvWfYn',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -224,8 +223,3 @@ WAGTAILMARKDOWN = {
     "extensions_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
 }
 
-TAILWIND_APP_NAME = 'theme'
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
