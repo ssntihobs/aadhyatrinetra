@@ -1,8 +1,10 @@
 from .base import *
 
 SECRET_KEY = 'EU9Cpozke$dLCbk2$~byv@fa2amF9$p4~RckzSPi#HZTydQ$NQgZ$ECc29$kugJXD#59YPbmYsZrW59gW@`@k3vVKZVZrLZ43ctK'
-ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['*']
+ALLOWED_HOSTS = ['https://impelverse.com']
+CSRF_TRUSTED_ORIGINS = ['https://impelverse.com']
+CSRF_ALLOWED_ORIGINS = ["https://impelverse.com"]
+CORS_ORIGINS_WHITELIST = ["https://impelverse.com"]
 
 DEBUG = True
 
