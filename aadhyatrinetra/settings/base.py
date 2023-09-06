@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     "wagtailmarkdown",
     # "debug_toolbar",
 
-    # "tailwind",
+    "tailwind",
     # "theme",
     # "django_browser_reload",
 
