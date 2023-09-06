@@ -50,6 +50,7 @@
 {% endif %}
 
 <section id="section-posts" class="container max-w-6xl mx-auto my-10 px-4">
+    {% if posts %}
     {% if 'search' not in request.path %}
     <h2 class="text-4xl font-bold text-center mb-10">Recent</h2>
 
@@ -196,6 +197,6 @@
         </div>
 
     </div>
-
+    {% endif %}
 </section>
 {% endblock %}
