@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     # "debug_toolbar",
 
     "tailwind",
-    # "theme",
+    "theme",
     # "django_browser_reload",
 
     "wagtail.contrib.forms",
