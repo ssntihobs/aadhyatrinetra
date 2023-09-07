@@ -223,3 +223,8 @@ WAGTAILMARKDOWN = {
     "extensions_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
 }
 
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
