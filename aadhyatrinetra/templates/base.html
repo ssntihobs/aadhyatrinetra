@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailuserbar tailwind_tags i18n wagtailmetadata_tags %}
+{% load static custom_tags wagtailcore_tags wagtailuserbar tailwind_tags i18n wagtailmetadata_tags %}
 
 
 <!DOCTYPE html>
@@ -40,11 +40,21 @@
         {# Global stylesheets #}
         {% tailwind_css %}
 <!--        <link rel="stylesheet" type="text/css" href="{% static 'css/dist/styles.css' %}" />-->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/aadhyatrinetra.css' %}"/>
 
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/aadhyatrinetra.css' %}"/>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0XY7BQN899"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-0XY7BQN899');
+        </script>
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -76,26 +86,11 @@
         <nav class="md:flex hidden justify-center items-center h-14">
             <ul class="flex h-100">
                 <li class="mr-2">
-                    <a class="font-semibold" href="javascript:void(0);">Home</a>
+                    <a class="font-semibold" href="/">Home</a>
                 </li>
-                <li class="mr-2">
-                    <a class="font-semibold" href="javascript:void(0);">Technology</a>
-                </li>
-                <li class="mr-2">
-                    <a class="font-semibold" href="javascript:void(0);">Travel</a>
-                </li>
-                <li class="mr-2">
-                    <a class="font-semibold" href="javascript:void(0);">Food</a>
-                </li>
-                <li class="mr-2">
-                    <a class="font-semibold" href="javascript:void(0);">Health</a>
-                </li>
-                <li class="mr-2">
-                    <a class="font-semibold" href="javascript:void(0);">Finance</a>
-                </li>
-                <li class="mr-2">
-                    <a class="font-semibold" href="javascript:void(0);">Fashion</a>
-                </li>
+                {% for category in categories %}
+                <a href="{% category_url category.slug %}/">{{ category.name }}</a>
+                {% endfor %}
             </ul>
         </nav>
     </header>

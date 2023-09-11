@@ -1,8 +1,11 @@
 venv/
 static/
+!/aadhyatrinetra/static/
 media/
 __pycache__/
 node_modules/
 .DS_Store
 .dockerignore
 *.sqlite3
+.env
+dev.py

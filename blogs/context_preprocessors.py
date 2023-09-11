@@ -1,5 +1,16 @@
 from wagtail.models import Site
+
+from categories.models import Category
 from .models import BlogPage
+
+
+def categories(request):
+    categories = Category.objects.filter(parent__isnull=True)
+    context = {
+        'categories': categories
+    }
+
+    return context
 
 
 def blog_page(request):

@@ -27,11 +27,9 @@ INSTALLED_APPS = [
     "categories",
     "blogs",
     "wagtailmarkdown",
-    # "debug_toolbar",
 
     "tailwind",
     "theme",
-    # "django_browser_reload",
 
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
@@ -58,7 +56,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -88,33 +85,13 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "blogs.context_preprocessors.blog_page",
+                "blogs.context_preprocessors.categories",
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = "aadhyatrinetra.wsgi.application"
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#     }
-# }
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'krw6xsjuszlr9pfijcuf',
-        "USER": 'plutobitti',
-        "PASSWORD": 'K2FP5eDNdw23HeRqgE97nxRvZkrib7htmpTSfdmF',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -222,9 +199,3 @@ WAGTAILMARKDOWN = {
     "extension_configs": {},  # optional. a dictionary with the extension name as key, and its configuration as value
     "extensions_settings_mode": "extend",  # optional. Possible values: "extend" or "override". Defaults to "extend".
 }
-
-TAILWIND_APP_NAME = 'theme'
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]

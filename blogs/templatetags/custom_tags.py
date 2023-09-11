@@ -17,6 +17,10 @@ def post_page_slug_url(post_page, blog_page):
 def truncate_with_ellipsis(text, limit):
     return truncatechars(text, limit) if len(text) > limit else text
 
+@register.simple_tag()
+def category_url(category_slug):
+    return f'/topic/{category_slug}'
+
 # @register.simple_tag()
 # def blog_page_category_pagination_url(page_num, blog_page):
 #     url = blog_page.reverse_subpage(

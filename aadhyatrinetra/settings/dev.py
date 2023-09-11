@@ -11,11 +11,30 @@ ALLOWED_HOSTS = ["*"]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-
 try:
     from .base import *
 except ImportError:
     pass
+
+INSTALLED_APPS += [
+    "debug_toolbar",
+    "django_browser_reload",
+]
+
+# MIDDLEWARE += [
+#     "debug_toolbar.middleware.DebugToolbarMiddleware",
+#     "django_browser_reload.middleware.BrowserReloadMiddleware",
+# ]
+
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
+}
 
 TAILWIND_APP_NAME = 'theme'
 

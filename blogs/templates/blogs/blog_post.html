@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
-{% load wagtailcore_tags wagtailmarkdown wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailmarkdown wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/glightbox.min.css' %}" />
+{% endblock %}
 
 {% block content %}
 <div class="pt-20 pb-10 bg-black text-white mb-10">
@@ -21,16 +27,27 @@
             {% if block.block_type == 'richtext' %}
             {{ block.value|markdown }}
             {% elif block.block_type == 'carousel' %}
-            <div class="my-5">
+            <ul class="box-container my-5">
                 {% for item in block.value %}
-                    {% image item fill-750x500 format-webp %}
+                            {% image item fill-750x500 format-webp %}
                 {% endfor %}
-            </div>
+            </ul>
+
             {% elif block.block_type == 'gallery' %}
-                <div class="my-5">
+                <div class="flex flex-col w-full my-5">
+                    <ul class="gg-container gallery owl-theme overflow-hidden relative rounded-md">
                     {% for item in block.value %}
-                        {% image item fill-100x100 format-webp %}
+                    {% image item original format-webp as img %}
+                        <li class="item gg-box list-none">
+                            <div class="inner h-full">
+                                <a href="{{ img.url }}" class="glightbox h-full w-full block">
+                                    {% image item format-webp class='object-cover h-full w-full rounded-md' %}
+                                </a>
+                            </div>
+                        </li>
                     {% endfor %}
+                    </ul>
+<!--                    <p id="counter" class="text-center"></p>-->
                 </div>
             {% elif block.block_type == 'markdown' %}
             {{ block.value|markdown }}
@@ -119,4 +136,49 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/glightbox.min.js' %}"></script>
+    <script>
+        const lightbox = GLightbox();
+        const owl = $('.gallery');
+        owl.on("initialized.owl.carousel changed.owl.carousel", function(e) {
+            if (!e.namespace) {
+              return;
+            }
+            $("#counter").text(
+              e.relatedTarget.relative(e.item.index) + 1 + " / " + e.item.count
+            );
+          })
+        .owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            dots: false,
+            singleImage: true,
+            autoHeight: true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:1
+                },
+                1000:{
+                    items:1
+                }
+            },
+            onInitialized: function(event) {
+                let counterDiv = document.createElement('div');
+                counterDiv.setAttribute('id', 'counter');
+                counterDiv.setAttribute('class', 'text-sm text-white px-4 leading-9');
+                counterDiv.textContent = `${event.relatedTarget.relative(event.item.index)+1} / ${event.item.count}`;
+                let nextButton = document.querySelector('.owl-next');
+                nextButton.parentNode.insertBefore(counterDiv, nextButton.nextSibling);
+            },
+        });
+    </script>
 {% endblock %}
