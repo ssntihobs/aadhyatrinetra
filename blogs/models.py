@@ -76,6 +76,10 @@ class CustomPageForm(WagtailAdminPageForm):
         return cleaned_data
 
 
+def get_random_posts():
+    return BlogPost.objects.order_by('?')[:5]
+
+
 class BlogPage(MetadataPageMixin, RoutablePageMixin, Page):
     base_form_class = CustomPageForm
     posts = []
@@ -84,7 +88,7 @@ class BlogPage(MetadataPageMixin, RoutablePageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super(BlogPage, self).get_context(request, *args, **kwargs)
         context['posts'] = self.get_paginated_posts(request, self.posts)
-        context['pop_posts'] = self.get_random_posts()
+        context['pop_posts'] = get_random_posts()
 
         if 'topic' in request.path or 'tag' in request.path:
             category = Category.objects.get(slug=self.filter_term)
@@ -95,9 +99,6 @@ class BlogPage(MetadataPageMixin, RoutablePageMixin, Page):
             context['page'].description = 'We are here to guide you.'
             context['featured_posts'] = self.get_featured_posts()
         return context
-
-    def get_random_posts(self):
-        return BlogPost.objects.order_by('?')[:5]
 
     def get_featured_posts(self, category=None):
         if category:
@@ -160,7 +161,7 @@ class BlogPage(MetadataPageMixin, RoutablePageMixin, Page):
     def post_search(self, request, *args, **kwargs):
         search_query = request.GET.get("q", None)
         self.posts = self.get_posts()
-        print(self.posts)
+
         if search_query:
             self.filter_term = search_query
             self.filter_type = 'Search'
