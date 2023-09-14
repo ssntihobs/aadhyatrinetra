@@ -4,10 +4,10 @@ import os
 load_dotenv()
 
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
-ALLOWED_HOSTS = ['impelverse.com', '143.110.244.126']
-CSRF_TRUSTED_ORIGINS = ['impelverse.com', '143.110.244.126']
-CSRF_ALLOWED_ORIGINS = ["impelverse.com", '143.110.244.126']
-CORS_ORIGINS_WHITELIST = ["impelverse.com", '143.110.244.126']
+ALLOWED_HOSTS = ['impelverse.com', '139.59.86.210']
+CSRF_TRUSTED_ORIGINS = ['impelverse.com', '139.59.86.210']
+CSRF_ALLOWED_ORIGINS = ["impelverse.com", '139.59.86.210']
+CORS_ORIGINS_WHITELIST = ["impelverse.com", '139.59.86.210']
 
 DEBUG = False
 
