@@ -4,10 +4,10 @@ import os
 load_dotenv(find_dotenv())
 
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
-ALLOWED_HOSTS = ['impelverse.com', '139.59.86.210']
-CSRF_TRUSTED_ORIGINS = ['impelverse.com', '139.59.86.210']
-CSRF_ALLOWED_ORIGINS = ["impelverse.com", '139.59.86.210']
-CORS_ORIGINS_WHITELIST = ["impelverse.com", '139.59.86.210']
+ALLOWED_HOSTS = ['https://www.impelverse.com']
+CSRF_TRUSTED_ORIGINS = ['https://www.impelverse.com']
+CSRF_ALLOWED_ORIGINS = ["https://www.impelverse.com"]
+CORS_ORIGINS_WHITELIST = ["https://www.impelverse.com"]
 DJANGO_SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE')
 
 print('production file')
