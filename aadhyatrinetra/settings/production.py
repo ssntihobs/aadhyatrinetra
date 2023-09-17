@@ -53,17 +53,6 @@ INSTALLED_APPS = [
     "wagtailmetadata",
 ]
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": str(os.getenv('DB_NAME')),
-        "USER": str(os.getenv('DB_USER')),
-        "PASSWORD": str(os.getenv('DB_PASSWORD')),
-        'HOST': str(os.getenv('DB_HOST')),
-        'PORT': str(os.getenv('DB_PORT')),
-    }
-}
-
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -79,6 +68,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "aadhyatrinetra.urls"
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": str(os.getenv('DB_NAME')),
+        "USER": str(os.getenv('DB_USER')),
+        "PASSWORD": str(os.getenv('DB_PASSWORD')),
+        'HOST': str(os.getenv('DB_HOST')),
+        'PORT': str(os.getenv('DB_PORT')),
+    }
+}
 
 TEMPLATES = [
     {
