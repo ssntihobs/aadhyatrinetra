@@ -10,6 +10,8 @@ CSRF_ALLOWED_ORIGINS = ["impelverse.com", '139.59.86.210']
 CORS_ORIGINS_WHITELIST = ["impelverse.com", '139.59.86.210']
 DJANGO_SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE')
 
+print('production file')
+
 DEBUG = False
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
