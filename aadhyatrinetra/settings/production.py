@@ -1,7 +1,7 @@
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import os
 
-load_dotenv()
+load_dotenv(find_dotenv())
 
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 ALLOWED_HOSTS = ['impelverse.com', '139.59.86.210']
