@@ -18,6 +18,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from wagtailmetadata.models import MetadataPageMixin
 from wagtail.images.models import Image, AbstractImage, AbstractRendition
+from django.db.models import Q
 import datetime
 from django.contrib.auth import get_user_model
 from taggit.models import Tag as TaggitTag, TaggedItemBase
@@ -137,7 +138,10 @@ class BlogPage(MetadataPageMixin, RoutablePageMixin, Page):
     def post_by_category(self, request, category):
         self.filter_type = 'category'
         self.filter_term = category
-        self.posts = self.get_posts().filter(category__slug=category)
+        self.posts = self.get_posts().filter(
+            Q(category__parent__slug=category) |
+            (Q(category__parent__isnull=True) & Q(category__slug=category))
+        )
         # if not self.posts:
         #     raise Http404
         return self.render(request)
