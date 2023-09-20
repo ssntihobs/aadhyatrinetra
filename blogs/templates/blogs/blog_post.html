@@ -11,7 +11,7 @@
 <div class="pt-20 pb-10 bg-black text-white mb-10">
     <div class="max-w-6xl mx-auto px-4">
         <h1 class="md:text-5xl text-2xl font-bold mb-3">{{ page.title }}</h1>
-        <a href="javascript:void(0);" class="text-md mb-1">{{ page.get_author }}</a>
+        <p class="text-md mb-1">{{ page.get_author }}</p>
         <p class="mb-0 text-xs">{{ page.publication_date }}</p>
     </div>
 </div>
@@ -21,7 +21,7 @@
         <div class="md:w-4/6 w-full">
             {% image page.thumbnail width-300 format-webp as mobile %}
             {% image page.thumbnail width-500 format-webp as tablet %}
-            <img class="rounded-md mb-5 w-full" rel="preload" height="{{ mobile.height }}" width="{{ mobile.width }}" src="{{ mobile.url }}" alt="{{ mobile.alt }}" srcset="{{ tablet.url }} 2x" />
+            <img class="rounded-xl mb-5 w-full" rel="preload" height="{{ mobile.height }}" width="{{ mobile.width }}" src="{{ mobile.url }}" alt="{{ mobile.alt }}" srcset="{{ tablet.url }} 2x" />
 
             {% for block in page.content %}
             {% if block.block_type == 'richtext' %}
@@ -29,24 +29,24 @@
             {% elif block.block_type == 'carousel' %}
             <ul class="box-container my-5">
                 {% for item in block.value %}
-                            {% image item fill-750x500 format-webp %}
+                    {% image item fill-750x500 format-webp %}
                 {% endfor %}
             </ul>
 
             {% elif block.block_type == 'gallery' %}
                 <div class="flex flex-col w-full my-5">
-                    <ul class="gg-container owl-carousel owl-theme overflow-hidden relative rounded-md">
+                    <div class="gg-container owl-carousel owl-theme overflow-hidden relative rounded-xl">
                     {% for item in block.value %}
                     {% image item original format-webp as img %}
-                        <li class="item gg-box list-none">
+                        <div class="item gg-box list-none">
                             <div class="inner h-full">
                                 <a href="{{ img.url }}" class="glightbox h-full w-full block">
                                     {% image item format-webp class='object-cover h-full w-full rounded-md' %}
                                 </a>
                             </div>
-                        </li>
+                        </div>
                     {% endfor %}
-                    </ul>
+                    </div>
                 </div>
             {% elif block.block_type == 'markdown' %}
             {{ block.value|markdown }}
@@ -126,44 +126,5 @@
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/glightbox.min.js' %}"></script>
-    <script>
-        const lightbox = GLightbox();
-        const owl = $('.owl-carousel');
-        owl.on("initialized.owl.carousel changed.owl.carousel", function(e) {
-            if (!e.namespace) {
-              return;
-            }
-            $("#counter").text(
-              e.relatedTarget.relative(e.item.index) + 1 + " / " + e.item.count
-            );
-          })
-        .owlCarousel({
-            loop:true,
-            margin:10,
-            lazyLoad: true,
-            nav:true,
-            dots: false,
-            singleImage: true,
-            autoHeight: false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                1000:{
-                    items:1
-                }
-            },
-            onInitialized: function(event) {
-                let counterDiv = document.createElement('div');
-                counterDiv.setAttribute('id', 'counter');
-                counterDiv.setAttribute('class', 'text-sm text-white px-4 leading-9');
-                counterDiv.textContent = `${event.relatedTarget.relative(event.item.index)+1} / ${event.item.count}`;
-                let nextButton = document.querySelector('.owl-next');
-                nextButton.parentNode.insertBefore(counterDiv, nextButton.nextSibling);
-            },
-        });
-    </script>
+    <script src="{% static 'js/aadhyatrinetra.js' %}"></script>
 {% endblock %}

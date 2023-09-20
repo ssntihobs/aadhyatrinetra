@@ -1,4 +1,4 @@
-{% load static custom_tags wagtailcore_tags wagtailuserbar tailwind_tags i18n wagtailmetadata_tags %}
+{% load django_browser_reload static custom_tags wagtailcore_tags wagtailuserbar tailwind_tags i18n wagtailmetadata_tags %}
 
 
 <!DOCTYPE html>
@@ -83,14 +83,16 @@
         </nav>
 
         <nav class="md:flex hidden justify-center items-center h-14">
-            <ul class="flex h-100">
-                <li class="mr-2">
+            <div class="flex h-100">
+                <div class="mx-2">
                     <a class="font-semibold" href="/">Home</a>
-                </li>
+                </div>
                 {% for category in categories %}
-                <a href="{% category_url category.slug %}/">{{ category.name }}</a>
+                <div class="mr-2">
+                    <a href="{% category_url category.slug %}/">{{ category.name }}</a>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
         </nav>
     </header>
 
@@ -104,7 +106,7 @@
 
         {# Global javascript #}
 <!--        <script type="text/javascript" src="{% static 'js/aadhyatrinetra.js' %}"></script>-->
-
+        {% django_browser_reload_script %}
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}
         {% endblock %}

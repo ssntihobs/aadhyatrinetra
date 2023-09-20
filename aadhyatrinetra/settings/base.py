@@ -155,7 +155,7 @@ MEDIA_URL = "/media/"
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "aadhyatrinetra"
+WAGTAIL_SITE_NAME = "Impelverse"
 
 CACHES = {
     'default': {

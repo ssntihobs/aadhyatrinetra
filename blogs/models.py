@@ -96,7 +96,7 @@ class BlogPage(MetadataPageMixin, RoutablePageMixin, Page):
             context['page'].title = self.filter_term.capitalize()
         else:
             context['page'].title = 'ImpelVerse'
-            context['page'].description = 'We are here to guide you.'
+            context['page'].description = 'Explore the uncharted territories of knowledge with Impelverse, where curiosity fuels discovery.'
             context['featured_posts'] = self.get_featured_posts()
         return context
 
