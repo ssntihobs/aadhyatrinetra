@@ -107,7 +107,7 @@ class BlogPage(MetadataPageMixin, RoutablePageMixin, Page):
         return FeaturedPost.objects.all()
 
     def get_posts(self):
-        return BlogPost.objects.live().specific().order_by("first_published_at").prefetch_related('thumbnail',
+        return BlogPost.objects.live().specific().order_by("-first_published_at").prefetch_related('thumbnail',
                                                                                                   'category', 'owner')
 
     def get_paginated_posts(self, request, qs):
